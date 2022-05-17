@@ -1,0 +1,22 @@
+{
+  "file": {
+    "drop_duplicates": "True",
+    "ext": ".csv",
+    "delimiter": ",",
+    "encoding": "ascii",
+    "schema": {
+      "Login email": "str",
+      "Identifier": "int",
+      "First name": "str",
+      "Last name": "str",
+      "Location": {
+        "city": "str",
+        "country": "str"
+      }
+    }
+  }
+}
+
+
+
+
