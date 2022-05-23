@@ -1,12 +1,12 @@
 import logging
-
+from test import compare_schemas, get_schema, expand_nested
 import pandas as pd
 from utils import normalization, get_delimiter, get_encoding, \
     read_config, compare
 
-url = "/home/ninosha/Downloads/email.csv"
+url = r"C:\Users\pc\Downloads\email.csv"
 
-config_url = "/home/ninosha/Desktop/projects/4th_project/cf/conf.json"
+config_url = r"C:\Users\pc\PycharmProjects\4th-p\conf.json"
 
 
 def formatting(file_url, conf_url):
@@ -17,23 +17,11 @@ def formatting(file_url, conf_url):
     file_columns = df.columns
     file_delimiter = get_delimiter(file_url)
     file_encoding = get_encoding(file_url)
-    file_nested_cols = eval(df["Location"][0]).keys()
-    file_dtypes = df.dtypes
-    # del schema["Location"]
-    # schema.update(conf_nested)
-    schema_columns = schema.keys()
-    df_columns = df.columns
 
-    for column, col_type in schema.items():
-        # TODO: Check this
-        assert str(df[column].dtype) == col_type
 
     # TODO: Disassemble the function
     result = compare(conf_ext, file_ext, conf_delimiter,
-                     file_delimiter
-                     , conf_encoding, file_encoding, conf_columns,
-                     file_columns, conf_nested.keys(), file_nested_cols,
-                     conf_dtypes, file_dtypes)
+                     file_delimiter, conf_encoding, file_encoding)
 
     if result:
         logging.info("CSV file has an acceptable format")
@@ -41,12 +29,17 @@ def formatting(file_url, conf_url):
         df.drop_duplicates(inplace=True)
 
         logging.info("duplicated rows are dropped")
+        try:
+            nested_column = expand_nested(df)
+            res = normalization(df, nested_column)
 
-        res = normalization(df)
-
-        logging.info("Data layers are normalized according to schema")
-
+            logging.info("Data layers are normalized according to schema")
+            conf_schema = get_schema(config_url, nested_column)
+            compare_schemas(conf_schema, res)
+        except Exception as e:
+            return "last value should be dictionary"
         return res
+
 
 
 formatting(url, config_url)

@@ -44,18 +44,29 @@ def get_encoding(url):
     # p.s you can read only first line and then scan whole file for commas.
     # Amount of commas should be [ number of columns * number of rows ]
 
-def normalization(df):
-    # making location values into dictionary'
 
+def expand_nested(dataf):
+    first_row = dict(dataf.iloc[0])
+    for column, value in first_row.items():
+        try:
+            if eval(value):
+
+                return column
+        except:
+            pass
+
+
+def normalization(df, nested_col):
+    # making location values into dictionary'
     new = [eval(value)
            for value
-           in df["Location"].values]
+           in df[nested_col].values]
 
     new_df = pd.DataFrame(new)
 
     # dropping the column "Location" from original df
     # TODO : DO NOT HARDCODE ANY OF THE COLUMNS
-    updated_df = df.drop("Location", axis=1)
+    updated_df = df.drop(nested_col, axis=1)
 
     # concatenating two dictionaries into dataframe
     old_dict = updated_df.to_dict()
@@ -71,18 +82,11 @@ def normalization(df):
 
 def compare(conf_ext, file_ext, conf_delimiter,
             file_delimiter, conf_encoding,
-            file_encoding, conf_columns,
-            file_columns, nested_conf,
-            nested_file, conf_dtypes, file_dtypes):
-    columns_compare = all(conf_columns == file_columns)
-    nested_cols_compare = all([nested_conf == nested_file])
+            file_encoding):
 
     result = all([conf_ext == file_ext,
                   conf_delimiter == file_delimiter,
-                  conf_encoding == file_encoding,
-                  columns_compare,
-                  nested_cols_compare,
-                  conf_dtypes == file_dtypes]
+                  conf_encoding == file_encoding]
                  )
     return result
 

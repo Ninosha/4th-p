@@ -5,17 +5,18 @@
     "delimiter": ",",
     "encoding": "ascii",
     "schema": {
-      "Login email": "str",
+      "Login email": "str/object",
       "Identifier": "int",
-      "First name": "str",
-      "Last name": "str",
+      "First name": "str/object",
+      "Last name": "str/object",
       "Location": {
-        "city": "str",
-        "country": "str"
+        "city": "str/object",
+        "country": "str/object"
+      }
       }
     }
   }
-}
+
 
 
 
