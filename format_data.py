@@ -18,7 +18,7 @@ def formatting(file_url, conf_url):
     file_delimiter = get_delimiter(file_url)
     file_encoding = get_encoding(file_url)
 
-
+    #
     # TODO: Disassemble the function
     result = compare(conf_ext, file_ext, conf_delimiter,
                      file_delimiter, conf_encoding, file_encoding)

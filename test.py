@@ -38,3 +38,4 @@ def compare_schemas(schema_df, extended_df):
         else:
             schema_status = False
     return schema_status
+#

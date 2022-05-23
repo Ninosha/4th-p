@@ -11,3 +11,4 @@ def etl_job(request):
         "message":
             "file was foramtted successfully and uploaded to postgres"
     }
+#

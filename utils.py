@@ -55,7 +55,7 @@ def expand_nested(dataf):
         except:
             pass
 
-
+#
 def normalization(df, nested_col):
     # making location values into dictionary'
     new = [eval(value)

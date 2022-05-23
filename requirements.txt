@@ -3,3 +3,4 @@ gcsfs
 chardet
 pyspark
 jsonschema
+s
