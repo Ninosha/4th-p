@@ -1,6 +1,5 @@
 pandas
 gcsfs
 chardet
-pyspark
 jsonschema
-s
+sqlalchemy

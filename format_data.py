@@ -5,10 +5,6 @@ from utils import read_config, update_config_schema, \
 from main_funcs import expand_nested, compare_schemas, \
     extend_file, compare
 
-url = "/home/ninosha/Downloads/email.csv"
-
-config_url = "conf.json"
-
 
 def formatting(file_url, conf_url):
     conf_ext, conf_delimiter, conf_encoding, schema, drop_duplicates = \
@@ -47,7 +43,6 @@ def formatting(file_url, conf_url):
 
         logging.info("Data layers are normalized according to schema")
 
-
         print(formatted_df)
         return formatted_df
 
@@ -57,6 +52,3 @@ def formatting(file_url, conf_url):
         logging.info(message)
 
         return message
-
-
-formatting(url, config_url)
