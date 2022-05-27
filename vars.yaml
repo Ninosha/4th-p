@@ -1,0 +1,5 @@
+CONFIG_URL: conf.json
+BUCKET_NAME: csv_files_to_normalize
+TO_NORMALIZE_DIR: to_normilize/
+RAW_DIR: raw_data
+DATASET_NAME: normalized_data

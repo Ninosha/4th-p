@@ -2,8 +2,6 @@
   "file": {
     "drop_duplicates": "True",
     "ext": ".csv",
-    "delimiter": ",",
-    "encoding": "ascii",
     "schema": {
       "Login email": "str/object",
       "Identifier": "int",

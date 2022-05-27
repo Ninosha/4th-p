@@ -50,11 +50,6 @@ def extend_file(file_df, nested_col):
     return res
 
 
-def compare(conf_ext, file_ext, conf_delimiter,
-            file_delimiter, conf_encoding,
-            file_encoding):
-    result = all([conf_ext == file_ext,
-                  conf_delimiter == file_delimiter,
-                  conf_encoding == file_encoding]
-                 )
-    return result
+def compare(conf_ext, file_ext):
+    if conf_ext == file_ext:
+        return True
